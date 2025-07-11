@@ -1,0 +1,20 @@
+---
+- name: Update web servers
+  hosts: web
+
+  tasks:
+  - name: Ensure web.txt created
+    file:
+      path: /home/ec2-user/web.txt
+      state: touch
+
+- name: Update db servers
+  hosts: db
+
+  tasks:
+  - name: Ensure db.txt created
+    file:
+      path: /home/ec2-user/db.txt
+      state: touch
+
+

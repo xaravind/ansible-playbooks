@@ -1,0 +1,21 @@
+---
+- name: Update all servers
+  hosts: all
+
+  tasks:
+  - name: Ensure demo.txt created
+    file:
+      path: /home/ec2-user/demo.txt
+      state: touch
+
+  - name: Ensure folder is  created
+    file:
+      path: /home/ec2-user/folder
+      state: directory
+
+  - name: Ensure hell0.txt is created with content
+    copy:
+      dest: /home/ec2-user/hello.txt
+      content: hello
+
+

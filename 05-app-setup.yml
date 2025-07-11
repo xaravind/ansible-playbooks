@@ -1,0 +1,31 @@
+---
+- name: Update all servers
+  hosts: all
+  become: true
+
+  tasks:
+  - name: Ensure git installed
+    package:
+      name: git
+      state: present
+
+- name: Update web servers
+  hosts: web
+  become: true
+
+  tasks:
+  - name: Ensure cloned repo
+    git:
+      dest: /var/www/html/
+      repo: https://github.com/Ai-TechNov/ecomm.git
+
+- name: Update db servers
+  hosts: db
+  become: true
+
+  tasks:
+  - name: Ensure cloned repo
+    git:
+      dest: /var/www/html/
+      repo: https://github.com/Ai-TechNov/Food-App.git
+

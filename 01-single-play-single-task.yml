@@ -1,0 +1,11 @@
+---
+- name: Update all servers
+  hosts: all
+
+  tasks:
+  - name: Ensure sample.txt created
+    file:
+      path: /home/ec2-user/sample.txt
+      state: touch
+
+# ansible all -m file -a "path=/home/ec2-user/sample.txt state=touch"
