@@ -1,0 +1,17 @@
+---
+- name: Update all servers
+  hosts: all
+  become: true
+
+  tasks:
+  - name: Ensure file uodated
+    copy:
+      src: ports.conf 
+      dest: /etc/apache2/ports.conf
+
+  - name: Ensure apche2
+    service:
+      name: apache2
+      state: restarted
+  
+

@@ -1,0 +1,13 @@
+---
+- name: Update all servers
+  hosts: all
+  become: true
+  vars: 
+    user_name: kiran
+
+
+  tasks:
+  - name: Ensure file uodated
+    template:
+      src: dynamic.html.j2 
+      dest: /var/www/html/index.html

@@ -5,12 +5,12 @@
   tasks:
   - name: Ensure httpd installed
     package:
-      name: httpd
+      name: apache2
       state: present
 
   - name: Ensure httpd started
     service:
-      name: httpd
+      name: apache2
       state: started
       enabled: true
 

@@ -9,6 +9,11 @@
       name: git
       state: present
 
+  - name: Ensure git installed
+    file:
+      path: /var/www/html/
+      state: absent
+
 - name: Update web servers
   hosts: web
   become: true
