@@ -1,0 +1,19 @@
+---
+- name: Update all servers
+  hosts: ubuntu
+  become: true
+  vars:
+    http_port: 8080
+
+  tasks:
+  - name: Ensure file uodated
+    template:
+      src: ports.j2 
+      dest: /etc/apache2/ports.conf
+
+  - name: Ensure apche2
+    service:
+      name: apache2
+      state: restarted
+  
+

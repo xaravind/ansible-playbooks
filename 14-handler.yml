@@ -1,0 +1,26 @@
+---
+- name: Update all servers
+  hosts: ubuntu
+  become: true
+  vars:
+    http_port: 80
+  
+  handlers:   
+  - name: Restart apche2
+    service:
+      name: apache2
+      state: restarted    
+  
+  tasks:
+  - name: Ensure file uodated
+    template:
+      src: ports.j2 
+      dest: /etc/apache2/ports.conf
+    notify:
+      - Restart apche2
+
+  - name: copy php
+    copy:
+      src: session.php
+      dest: /var/www/html/session.php
+
